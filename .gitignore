@@ -1,5 +1,6 @@
 # Pastas
-crud/__pycache__/
+**/__pycache__/
 
 # Arquivos
 anotações.txt
+db.sqlite3
