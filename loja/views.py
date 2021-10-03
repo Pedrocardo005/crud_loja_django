@@ -41,3 +41,8 @@ def add_categoria(request):
     categoria = Categoria(nome=request.POST['nome'])
     categoria.save()
     return HttpResponseRedirect(reverse('loja:categoria'))
+
+def excluir_categoria(request,id):
+    categoria = Categoria.objects.get(pk=id)
+    categoria.delete()
+    return HttpResponseRedirect(reverse('loja:categoria'))

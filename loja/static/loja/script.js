@@ -15,11 +15,12 @@ function getCookie(name) {
 }
 const csrftoken = getCookie('csrftoken');
 
-function deletarProduto(id) {
+function deletarPorId(url, id) {
+    var endereco = url + "/" + id;
 
     if (window.confirm('Deseja realmente excluir este produto?')) {
         const request = new Request(
-            `produto/deletar/${id}`,
+            endereco,
             {headers: {'X-CSRFToken': csrftoken}}
         );
         fetch(request, {
