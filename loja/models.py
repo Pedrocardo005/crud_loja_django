@@ -8,4 +8,4 @@ class Produto(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     preco = models.FloatField()
     fabricante = models.TextField(max_length=255)
-    vendido = models.BooleanField
+    quantidade = models.IntegerField(null=True)

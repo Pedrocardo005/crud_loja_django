@@ -8,17 +8,25 @@
             </tr>
         </thead>
         <tbody>
+            {% if categorias %}
+                {% for categoria in categorias %}
+                <tr>
+                    <td>{{ categoria.nome }}</td>
+                    <td>
+                        <button class="btn btn-success">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                        <button class="btn btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
             <tr>
-                <td>John</td>
-                <td>
-                    <button class="btn btn-success">
-                        <i class="fas fa-pen"></i>
-                    </button>
-                    <button class="btn btn-danger">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </td>
+                <td>Nenhuma categoria disponível</td>
             </tr>
+            {% endif %}
         </tbody>
     </table>
 </div>
