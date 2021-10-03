@@ -8,15 +8,29 @@ from loja.models import Produto
 
 # Create your views here.
 def index(request):
-    return render(request,'loja/index.html')
+    produtos = Produto.objects.all()
+    categorias = Categoria.objects.all()
+    data = {
+        'produtos': produtos,
+        'categorias': categorias
+    }
+    return render(request,'loja/index.html', data)
 
 def categoria(request):
     categorias = Categoria.objects.all()
     return render(request, 'loja/categorias.html', {'categorias': categorias})
 
 def add_produto(request):
-    print(request.POST['nome'])
-    return render(request, 'loja/index.html')
+    categoria = Categoria.objects.get(pk=request.POST['categoria'])
+    produto = Produto(
+        nome=request.POST['nome'],
+        categoria=categoria,
+        preco=request.POST['preco'],
+        fabricante=request.POST['fabricante'],
+        quantidade=request.POST['quantidade']
+        )
+    produto.save()
+    return HttpResponseRedirect(reverse('loja:index'))
 
 def add_categoria(request):
     categoria = Categoria(nome=request.POST['nome'])

@@ -13,22 +13,32 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>John</td>
-                <td>Doe</td>
-                <td></td>
-                <td>John</td>
-                <td></td>
-                <td></td>
-                <td>
-                    <button class="btn btn-success">
-                        <i class="fas fa-pen"></i>
-                    </button>
-                    <button class="btn btn-danger">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </td>
-            </tr>
+            {% if produtos %}
+                {% for produto in produtos %}
+                <tr>
+                    <td>{{ produto.nome }}</td>
+                    <td>{{ produto.preco }}</td>
+                    <td>{{ produto.fabricante }}</td>
+                    <td>{{ produto.categoria.nome }}</td>
+                    <td>
+                        {% if produto.quantidade < 1 %}
+                            Indisponível
+                        {% else %}
+                            Disponível
+                        {% endif %}
+                    </td>
+                    <td>{{ produto.quantidade }}</td>
+                    <td>
+                        <button class="btn btn-success">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                        <button class="btn btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% endif %}
         </tbody>
     </table>
 </div>

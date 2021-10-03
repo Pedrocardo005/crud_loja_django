@@ -22,9 +22,11 @@
     <div class="form-group">
       <label for="sel1">Categoria:</label>
       <select class="form-control" id="sel1" name="categoria">
-        <option value="alimento">Alimento</option>
-        <option value="limpeza">limpeza</option>
-        <option value="higiene">higiene</option>
+        {% if categorias %}
+          {% for categoria in categorias %}
+            <option value="{{ categoria.id }}">{{ categoria.nome }}</option>
+          {% endfor %}
+        {% endif %}
       </select>
     </div>
 
