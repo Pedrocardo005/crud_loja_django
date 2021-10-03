@@ -16,10 +16,6 @@ def index(request):
     }
     return render(request,'loja/index.html', data)
 
-def categoria(request):
-    categorias = Categoria.objects.all()
-    return render(request, 'loja/categorias.html', {'categorias': categorias})
-
 def add_produto(request):
     categoria = Categoria.objects.get(pk=request.POST['categoria'])
     produto = Produto(
@@ -31,6 +27,15 @@ def add_produto(request):
         )
     produto.save()
     return HttpResponseRedirect(reverse('loja:index'))
+
+def excluir_produto(request,id):
+    produto = Produto.objects.get(pk=id)
+    produto.delete()
+    return HttpResponseRedirect(reverse('loja:index'))
+
+def categoria(request):
+    categorias = Categoria.objects.all()
+    return render(request, 'loja/categorias.html', {'categorias': categorias})
 
 def add_categoria(request):
     categoria = Categoria(nome=request.POST['nome'])
