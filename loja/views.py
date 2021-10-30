@@ -33,6 +33,25 @@ def excluir_produto(request,id):
     produto.delete()
     return HttpResponseRedirect(reverse('loja:index'))
 
+def atualizar_produto(request):
+
+    try:
+        atualizar = request.POST
+        produto = Produto.objects.get(id=request.POST['id'])
+        produto.nome = atualizar['nome']
+        produto.preco = float(atualizar['preco'])
+        produto.fabricante = atualizar['fabricante']
+        produto.quantidade = int(atualizar['quantidade'])
+
+        produto.save()
+    except Exception as error:
+        print('Error ',error)
+        
+        return HttpResponse(request, status=500)
+
+    # produto = Produto.objects.get(pk=id)
+    return HttpResponseRedirect(reverse('loja:index'))
+
 def categoria(request):
     categorias = Categoria.objects.all()
     return render(request, 'loja/categorias.html', {'categorias': categorias})

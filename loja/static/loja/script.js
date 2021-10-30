@@ -15,6 +15,7 @@ function getCookie(name) {
 }
 const csrftoken = getCookie('csrftoken');
 
+// Função responsável por fazer o delete dos itens.
 function deletarPorId(url, id) {
     var endereco = url + "/" + id;
 
@@ -32,4 +33,17 @@ function deletarPorId(url, id) {
             console.log(e);
         });
     }
+}
+
+// Adicionando valores ao modal.
+function putInModal(id, nome, preco, fabricante, categoria_id, quantidade) {
+    var _id, _nome, _preco, _fabricante, _categoria_id, _quantidade;
+
+    _id = document.getElementById('identifier').value = id;
+    _nome = document.getElementById('nomem').value = nome;
+    _preco = document.getElementById('precom').value = preco;
+    _fabricante = document.getElementById('fabricantem').value = fabricante;
+    _categoria_id = document.getElementById('sel1m').value = categoria_id;
+    _quantidade = document.getElementById('quantidadem').value = quantidade;
+
 }
