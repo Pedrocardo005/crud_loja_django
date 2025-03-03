@@ -1,4 +1,5 @@
 from django.urls import path
+
 from . import views
 
 app_name = 'loja'
@@ -9,5 +10,8 @@ urlpatterns = [
     path('produto/atualizar/', views.atualizar_produto, name='atualizar_produto'),
     path('categorias', views.categoria, name='categoria'),
     path('categoria/adicionar', views.add_categoria, name='cadastrar_categoria'),
-    path('categoria/deletar/<int:id>', views.excluir_categoria, name='excluir_categoria')
+    path('categoria/deletar/<int:id>',
+         views.excluir_categoria, name='excluir_categoria'),
+    path('categoria/atualizar/', views.atualizar_categoria,
+         name='atualizar_categoria')
 ]

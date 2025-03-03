@@ -22,14 +22,14 @@ function deletarPorId(url, id) {
     if (window.confirm('Deseja realmente excluir este produto?')) {
         const request = new Request(
             endereco,
-            {headers: {'X-CSRFToken': csrftoken}}
+            { headers: { 'X-CSRFToken': csrftoken } }
         );
         fetch(request, {
             method: 'POST',
             mode: 'same-origin'  // Do not send CSRF token to another domain.
-        }).then(function(response) {
+        }).then(function (response) {
             window.location.href = response.url
-        }).catch((e)=>{
+        }).catch((e) => {
             console.log(e);
         });
     }
@@ -46,4 +46,11 @@ function putInModal(id, nome, preco, fabricante, categoria_id, quantidade) {
     _categoria_id = document.getElementById('sel1m').value = categoria_id;
     _quantidade = document.getElementById('quantidadem').value = quantidade;
 
+}
+
+
+function putInEditCatModal(id, nome) {
+    var _id, _nome;
+    _id = document.getElementById('identifier').value = id;
+    _nome = document.getElementById('nomeEditar').value = nome;
 }
