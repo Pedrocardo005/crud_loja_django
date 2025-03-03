@@ -1,22 +1,21 @@
-<div class="form-produtos">
-
+<div class="form-produtos col-12">
   <h2>Cadastrar produtos</h2>
 
-  <form action="{% url 'loja:cadastrar_produto' %}" method="POST" >
-    {% csrf_token%}
+  <form action="{% url 'loja:cadastrar_produto' %}" method="POST">
+    {% csrf_token %}
     <div class="form-group">
       <label for="nome">Nome:</label>
-      <input type="text" class="form-control" id="nome" name="nome">
+      <input type="text" class="form-control" id="nome" name="nome" />
     </div>
 
     <div class="form-group">
       <label for="preco">Preço:</label>
-      <input type="number" class="form-control" id="preco" name="preco">
+      <input type="number" class="form-control" id="preco" name="preco" />
     </div>
 
     <div class="form-group">
       <label for="fabricante">Fabricante:</label>
-      <input type="text" class="form-control" id="fabricante" name="fabricante">
+      <input type="text" class="form-control" id="fabricante" name="fabricante" />
     </div>
 
     <div class="form-group">
@@ -32,11 +31,9 @@
 
     <div class="form-group">
       <label for="quantidade">Quantidade:</label>
-      <input type="number" class="form-control" id="quantidade" name="quantidade">
+      <input type="number" class="form-control" id="quantidade" name="quantidade" />
     </div>
 
     <button type="submit" class="btn btn-success">Cadastrar</button>
-
   </form>
-
 </div>

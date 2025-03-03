@@ -1,145 +1,106 @@
-<div class="container">
-    <h2>Lista de produtos</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Preço</th>
-                <th>Fabricante</th>
-                <th>Categoria</th>
-                <th>Status</th>
-                <th>Quantidade</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% if produtos %}
-                {% for produto in produtos %}
-                <tr>
-                    <td>{{ produto.nome }}</td>
-                    <td>{{ produto.preco }}</td>
-                    <td>{{ produto.fabricante }}</td>
-                    <td>{{ produto.categoria.nome }}</td>
-                    <td>
-                        {% if produto.quantidade < 1 %}
-                            Indisponível
-                        {% else %}
-                            Disponível
-                        {% endif %}
-                    </td>
-                    <td>{{ produto.quantidade }}</td>
-                    <td>
-                        <button 
-                        type="button" 
-                        class="btn btn-success" 
-                        data-toggle="modal" 
-                        data-target="#myModal"
-                        onclick="putInModal(
+<div class="container overflow-auto">
+  <h2>Lista de produtos</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Preço</th>
+        <th>Fabricante</th>
+        <th>Categoria</th>
+        <th>Status</th>
+        <th>Quantidade</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if produtos %}
+        {% for produto in produtos %}
+          <tr>
+            <td>{{ produto.nome }}</td>
+            <td>{{ produto.preco }}</td>
+            <td>{{ produto.fabricante }}</td>
+            <td>{{ produto.categoria.nome }}</td>
+            <td>
+              {% if produto.quantidade < 1 %}
+                Indisponível
+              {% else %}
+                Disponível
+              {% endif %}
+            </td>
+            <td>{{ produto.quantidade }}</td>
+            <td>
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" onclick="putInModal(
                             '{{ produto.id }}',
                             '{{ produto.nome }}',
                             '{{ produto.preco }}',
                             '{{ produto.fabricante }}',
                             '{{ produto.categoria.id }}',
                             '{{ produto.quantidade }}'
-                        )">
-                            <i class="fas fa-pen"></i>
-                          </button>
-                        <button 
-                        class="btn btn-danger"
-                        onclick="deletarPorId('produto/deletar', {{ produto.id }})">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-                {% endfor %}
-            {% endif %}
-        </tbody>
-    </table>
-    <div class="modal fade" id="myModal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-          
-            <!-- Modal Header -->
-            <div class="modal-header">
-              <h4 class="modal-title">Modal Heading</h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            
-            <form action="{% url 'loja:atualizar_produto' %}" method="POST" >
-                {% csrf_token%}
-
-                <!-- Input criado para armazenar o id  -->
-                <input id="identifier" type="" value="barril" style="display: none;" name="id"/>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-
-                <div class="form-group">
-                    <label for="nome">Nome:</label>
-                    <input 
-                    type="text" 
-                    class="form-control" 
-                    id="nomem" 
-                    name="nome"
-                    value="">
-                </div>
-            
-                <div class="form-group">
-                    <label for="preco">Preço:</label>
-                    <input 
-                    type="number" 
-                    class="form-control" 
-                    id="precom" 
-                    name="preco"
-                    value="">
-                </div>
-            
-                <div class="form-group">
-                    <label for="fabricante">Fabricante:</label>
-                    <input 
-                    type="text" 
-                    class="form-control" 
-                    id="fabricantem" 
-                    name="fabricante"
-                    value="">
-                </div>
-            
-                <div class="form-group">
-                    <label for="sel1">Categoria :</label>
-                    <select 
-                    class="form-control" 
-                    id="sel1m" 
-                    name="categoria"
-                    value="">
-                    {% if categorias %}
-                        {% for categoria in categorias %}
-                        <option value="{{ categoria.id }}">{{ categoria.nome }}</option>
-                        {% endfor %}
-                    {% endif %}
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="quantidade">Quantidade:</label>
-                    <input 
-                    type="number" 
-                    class="form-control" 
-                    id="quantidadem" 
-                    name="quantidade"
-                    value="">
-                </div>
-
-                </div>
-
-                <!-- Modal footer -->
-
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Atualizar</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-            </form>
-
-          </div>
+                        )"><i class="fas fa-pen"></i></button>
+              <button class="btn btn-danger" onclick="deletarPorId('produto/deletar', {{ produto.id }})"><i class="fas fa-trash"></i></button>
+            </td>
+          </tr>
+        {% endfor %}
+      {% endif %}
+    </tbody>
+  </table>
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
+
+        <form action="{% url 'loja:atualizar_produto' %}" method="POST">
+          {% csrf_token %}
+
+          <!-- Input criado para armazenar o id -->
+          <input id="identifier" type="" value="barril" style="display: none;" name="id" />
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="nome">Nome:</label>
+              <input type="text" class="form-control" id="nomem" name="nome" value="" />
+            </div>
+
+            <div class="form-group">
+              <label for="preco">Preço:</label>
+              <input type="number" class="form-control" id="precom" name="preco" value="" />
+            </div>
+
+            <div class="form-group">
+              <label for="fabricante">Fabricante:</label>
+              <input type="text" class="form-control" id="fabricantem" name="fabricante" value="" />
+            </div>
+
+            <div class="form-group">
+              <label for="sel1">Categoria :</label>
+              <select class="form-control" id="sel1m" name="categoria" value="">
+                {% if categorias %}
+                  {% for categoria in categorias %}
+                    <option value="{{ categoria.id }}">{{ categoria.nome }}</option>
+                  {% endfor %}
+                {% endif %}
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="quantidade">Quantidade:</label>
+              <input type="number" class="form-control" id="quantidadem" name="quantidade" value="" />
+            </div>
+          </div>
+
+          <!-- Modal footer -->
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Atualizar</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </form>
       </div>
+    </div>
+  </div>
 </div>

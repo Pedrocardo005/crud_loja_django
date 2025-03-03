@@ -1,33 +1,32 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Loja de vendas</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static 'loja/style.css' %}">
-</head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="{% static 'loja/style.css' %}" />
+  </head>
 
-<body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Produtos</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/categorias">Categorias</a>
-          </li>
-        </ul>
+  <body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark col-12">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Produtos</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/categorias">Categorias</a>
+        </li>
+      </ul>
     </nav>
 
     <main>
-        {% include 'loja/formularioProdutos.html' %}
-        {% include 'loja/listagemProdutos.html' %}
+      {% include 'loja/formularioProdutos.html' %}
+      {% include 'loja/listagemProdutos.html' %}
     </main>
 
     <!-- jQuery library -->
@@ -37,6 +36,5 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="{% static 'loja/script.js' %}"></script>
-</body>
-
+  </body>
 </html>
