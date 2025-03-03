@@ -8,6 +8,7 @@ python -m venv env_project
 ```
 
 2. Entre no ambiente virtual:
+
 no linux:
 ```bash
 source env_project/bin/activate

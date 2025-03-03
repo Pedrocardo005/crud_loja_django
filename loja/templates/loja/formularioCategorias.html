@@ -1,16 +1,13 @@
-<div class="form-produtos">
+<div class="form-produtos col-12">
+  <h2>Cadastrar categoria</h2>
 
-    <h2>Cadastrar categoria</h2>
-  
-    <form action="{% url 'loja:cadastrar_categoria' %}" method="POST">
-      {% csrf_token%}
-      <div class="form-group">
-        <label for="nome">Nome:</label>
-        <input type="text" class="form-control" id="nome" name="nome">
-      </div>
-  
-      <button type="submit" class="btn btn-success">Cadastrar</button>
-  
-    </form>
-  
-  </div>
+  <form action="{% url 'loja:cadastrar_categoria' %}" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="nome">Nome:</label>
+      <input type="text" class="form-control" id="nome" name="nome" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Cadastrar</button>
+  </form>
+</div>

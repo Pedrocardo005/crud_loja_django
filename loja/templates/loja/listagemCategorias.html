@@ -1,34 +1,28 @@
-<div class="container">
-    <h2>Lista de categorias</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% if categorias %}
-                {% for categoria in categorias %}
-                <tr>
-                    <td>{{ categoria.nome }}</td>
-                    <td>
-                        <button class="btn btn-success">
-                            <i class="fas fa-pen"></i>
-                        </button>
-                        <button 
-                        class="btn btn-danger"
-                        onclick="deletarPorId('categoria/deletar', {{ categoria.id }})">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-                {% endfor %}
-            {% else %}
-            <tr>
-                <td>Nenhuma categoria disponível</td>
-            </tr>
-            {% endif %}
-        </tbody>
-    </table>
+<div class="container overflow-auto">
+  <h2>Lista de categorias</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if categorias %}
+        {% for categoria in categorias %}
+          <tr>
+            <td>{{ categoria.nome }}</td>
+            <td>
+              <button class="btn btn-success"><i class="fas fa-pen"></i></button>
+              <button class="btn btn-danger" onclick="deletarPorId('categoria/deletar', {{ categoria.id }})"><i class="fas fa-trash"></i></button>
+            </td>
+          </tr>
+        {% endfor %}
+      {% else %}
+        <tr>
+          <td>Nenhuma categoria disponível</td>
+        </tr>
+      {% endif %}
+    </tbody>
+  </table>
 </div>
